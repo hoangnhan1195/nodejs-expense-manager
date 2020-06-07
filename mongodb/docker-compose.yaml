@@ -1,0 +1,14 @@
+version: '3'
+services:
+  database:
+    image: 'mongo'
+    container_name: 'mongodb'
+    environment:
+      - MONGO_INITDB_DATABASE=expense-manager
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=matkhau123
+    volumes:
+      - ./addUser.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./db:/data/db
+    ports:
+      - 27017-27019:27017-27019
